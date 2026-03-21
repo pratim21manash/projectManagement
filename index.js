@@ -1,1 +1,1 @@
-console.log("Starting of project");
+console.log("Starting of project node.js");
