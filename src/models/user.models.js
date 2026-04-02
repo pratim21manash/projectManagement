@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose"
-import { type } from "os"
+import bcrypt from "bcrypt"
 
 const userSchema = new Schema({
     avatar: {
@@ -48,6 +48,12 @@ const userSchema = new Schema({
         type: Date
     }
 }, { timestamps: true })
+
+//Hooks
+userSchema.pre('save', async function(next){
+    await bcrypt.hash(this.password, 10)
+    next()
+})
    
 const UserModel = model("User", userSchema)
 export {UserModel}
