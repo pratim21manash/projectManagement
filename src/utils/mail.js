@@ -15,6 +15,17 @@ const setEmail = async (options) => {
 
   //email in HTML format
   const emailHTML = mailgenerator.generate(options.mailgenContent);
+
+  // creating transporter for sending image
+  // Create a transporter using SMTP
+  const transporter = nodemailer.createTransport({
+    host: process.env.MAILTRAP_SMTP_HOST,
+    port: process.env.MAILTRAP_SMTP_PORT,
+    auth: {
+      user: process.env.MAILTRAP_SMTP_USER,
+      pass: process.env.MAILTRAP_SMTP_PASS,
+    },
+  });
 };
 
 //Email verification mailGent content
