@@ -86,4 +86,8 @@ const fogetPasswordMailgenContent = (username, verificationURL) => {
   };
 };
 
-export { emailVerificationMailgenContent, fogetPasswordMailgenContent };
+export {
+  emailVerificationMailgenContent,
+  fogetPasswordMailgenContent,
+  sendEmail,
+};
