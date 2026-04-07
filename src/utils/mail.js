@@ -1,7 +1,7 @@
 import Mailgen from "mailgen";
 import mailgen from "mailgen";
 
-const setEmail = async (options) => {
+const sendEmail = async (options) => {
   const mailgenerator = new Mailgen({
     theme: "default",
     product: {
@@ -26,6 +26,22 @@ const setEmail = async (options) => {
       pass: process.env.MAILTRAP_SMTP_PASS,
     },
   });
+
+  //sending email defining email option
+  const mail = {
+    from: "mail.taskmanager@example.com",
+    to: options.email,
+    subject: options.subject,
+    text: emailText,
+    html: emailHTML,
+  };
+
+  //sending email
+  try {
+    await transporter.sendEmail(mail);
+  } catch (error) {
+    console.error("Error sending email:", error);
+  }
 };
 
 //Email verification mailGent content
